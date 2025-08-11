@@ -5,7 +5,8 @@
 
 class Rock : public Move {
 public:
-    Rock() : Move("Rock", {"Scissors"}) {}
+    std::string getName() const override;
+    bool beats(const Move* other) const override;
 };
 
 #endif

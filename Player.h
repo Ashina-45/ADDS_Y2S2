@@ -3,11 +3,12 @@
 
 #include "Move.h"
 #include <string>
+#include <memory>
 
 class Player {
 public:
     virtual ~Player() = default;
-    virtual Move* makeMove() = 0;          // caller (Referee) owns and will delete
+    virtual std::unique_ptr<Move> makeMove() = 0;
     virtual std::string getName() const = 0;
 };
 

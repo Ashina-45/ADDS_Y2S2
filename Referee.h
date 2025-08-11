@@ -2,12 +2,12 @@
 #define REFEREE_H
 
 #include "Player.h"
+#include <memory>
 
 class Referee {
 public:
     Referee();
-    // Returns winner pointer or nullptr for a tie
-    Player* refGame(Player* player1, Player* player2);
+    const Player* judgeRound(Player& player1, Player& player2);
 };
 
 #endif

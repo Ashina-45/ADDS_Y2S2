@@ -1,17 +1,18 @@
 #ifndef HUMAN_H
 #define HUMAN_H
 
-#include "Player.h"
 #include <string>
 
-class Human : public Player {
-public:
-    explicit Human(std::string name = "Human");
-    Move* makeMove() override;
-    std::string getName() const override;
+#include "Player.h"
 
-private:
-    std::string name_;
+class Human : public Player {
+ private:
+  std::string name;
+
+ public:
+  explicit Human(const std::string& name = "Human");
+  std::unique_ptr<Move> makeMove() override;
+  std::string getName() const override;
 };
 
 #endif

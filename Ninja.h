@@ -4,9 +4,9 @@
 #include "Move.h"
 
 class Ninja : public Move {
-public:
-    // Ninja defeats Pirate, Zombie
-    Ninja() : Move("Ninja", {"Pirate","Zombie"}) {}
+ public:
+  std::string getName() const override;
+  bool beats(const Move* other) const override;
 };
 
 #endif

@@ -4,8 +4,9 @@
 #include "Move.h"
 
 class Paper : public Move {
-public:
-    Paper() : Move("Paper", {"Rock"}) {}
+ public:
+  std::string getName() const override;
+  bool beats(const Move* other) const override;
 };
 
 #endif
