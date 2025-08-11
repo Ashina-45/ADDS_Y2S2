@@ -8,7 +8,7 @@
 class Player {
 public:
     virtual ~Player() = default;
-    virtual std::unique_ptr<Move> makeMove() = 0;
+    virtual Move* makeMove() = 0;
     virtual std::string getName() const = 0;
 };
 

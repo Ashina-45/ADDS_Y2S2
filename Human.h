@@ -11,7 +11,7 @@ class Human : public Player {
 
  public:
   explicit Human(const std::string& name = "Human");
-  std::unique_ptr<Move> makeMove() override;
+  Move* makeMove() override;
   std::string getName() const override;
 };
 

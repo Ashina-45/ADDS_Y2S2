@@ -4,11 +4,11 @@
 
 Human::Human(const std::string& name) : name(name) {}
 
-std::unique_ptr<Move> Human::makeMove() {
+Move* Human::makeMove() {
     std::string moveName;
     std::cout << "Enter Move: ";
     std::cin >> moveName;
-    return createMoveFromName(moveName);
+    return createMoveFromName(moveName).release();
 }
 
 std::string Human::getName() const {

@@ -2,6 +2,6 @@
 
 #include "Rock.h"
 
-std::unique_ptr<Move> Computer::makeMove() { return std::make_unique<Rock>(); }
+Move* Computer::makeMove() { return new Rock(); }
 
 std::string Computer::getName() const { return "Computer"; }

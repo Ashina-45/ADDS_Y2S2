@@ -8,6 +8,7 @@ class Referee {
 public:
     Referee();
     const Player* judgeRound(Player& player1, Player& player2);
+    Player* refGame(Player* player1, Player* player2);
 };
 
 #endif

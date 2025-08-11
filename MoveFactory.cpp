@@ -8,23 +8,23 @@
 #include "Ninja.h"
 #include "Zombie.h"
 
-std::unique_ptr<Move> createMoveFromName(const std::string& moveName) {
+Move* createMoveFromName(const std::string& moveName) {
     if (moveName == "Rock") {
-        return std::make_unique<Rock>();
+        return new Rock();
     } else if (moveName == "Paper") {
-        return std::make_unique<Paper>();
+        return new Paper();
     } else if (moveName == "Scissors") {
-        return std::make_unique<Scissors>();
+        return new Scissors();
     } else if (moveName == "Robot") {
-        return std::make_unique<Robot>();
+        return new Robot();
     } else if (moveName == "Monkey") {
-        return std::make_unique<Monkey>();
+        return new Monkey();
     } else if (moveName == "Pirate") {
-        return std::make_unique<Pirate>();
+        return new Pirate();
     } else if (moveName == "Ninja") {
-        return std::make_unique<Ninja>();
+        return new Ninja();
     } else if (moveName == "Zombie") {
-        return std::make_unique<Zombie>();
+        return new Zombie();
     } else {
         return nullptr;
     }
