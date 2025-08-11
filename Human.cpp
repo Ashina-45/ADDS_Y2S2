@@ -8,7 +8,7 @@ Move* Human::makeMove() {
     std::string moveName;
     std::cout << "Enter Move: ";
     std::cin >> moveName;
-    return createMoveFromName(moveName).release();
+    return createMoveFromName(moveName);
 }
 
 std::string Human::getName() const {
