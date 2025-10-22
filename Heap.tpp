@@ -166,86 +166,58 @@ public:
     }
 
     // Insert an element into the heap
-void insert(T element)
+    void insert(T element)
 {
-    data.push_back(element); 
+    data.push_back(element);
     int i = static_cast<int>(data.size()) - 1;
 
-    while (i > 0)
-    {
+    // bubble up (parent <= child)
+    while (i > 0) {
         int parent = (i - 1) / 2;
-        if (data[i] > data[parent])
-        {
+        if (data[i] < data[parent]) {
             std::swap(data[i], data[parent]);
             i = parent;
-        }
-        else
-        {
+        } else {
             break;
         }
     }
 }
 
-// Remove an element from the heap
-void remove(T value)
+
+    // Remove an element from the heap
+    void remove()
 {
     if (data.empty())
         throw std::out_of_range("Heap is empty");
 
-    int index = -1;
-    for (int i = 0; i < static_cast<int>(data.size()); i++)
-    {
-        if (data[i] == value)
-        {
-            index = i;
-            break;
-        }
-    }
-
-    if (index == -1)
-        throw std::invalid_argument("Element not found in heap");
-
-    data[index] = data.back();
+    data[0] = data.back();
     data.pop_back();
 
-    int n = static_cast<int>(data.size());
-    int i = index;
-
-    while (true)
-    {
-        int left = 2 * i + 1;
+    // bubble down
+    int i = 0;
+    const int n = static_cast<int>(data.size());
+    while (true) {
+        int left  = 2 * i + 1;
         int right = 2 * i + 2;
-        int largest = i;
+        int smallest = i;
 
-        if (left < n && data[left] > data[largest])  largest = left;
-        if (right < n && data[right] > data[largest]) largest = right;
+        if (left  < n && data[left]  < data[smallest]) smallest = left;
+        if (right < n && data[right] < data[smallest]) smallest = right;
 
-        if (largest != i)
-        {
-            std::swap(data[i], data[largest]);
-            i = largest;
-        }
-        else break;
+        if (smallest != i) {
+            std::swap(data[i], data[smallest]);
+            i = smallest;
+        } else break;
     }
-
-    while (i > 0)
+}
+    // Get the minimum element (root)
+    T getMin()
     {
-        int parent = (i - 1) / 2;
-        if (data[i] > data[parent])
-        {
-            std::swap(data[i], data[parent]);
-            i = parent;
-        }
-        else break;
+        if (data.empty())
+            throw std::out_of_range("Heap is empty");
+        return data[0];
     }
-}
-// Get the minimum element (which is actually the MAX element of the heap)
-T getMin()
-{
-    if (data.empty())
-        throw std::out_of_range("Heap is empty");
-    return data[0]; 
-}
+
 
 };
 
